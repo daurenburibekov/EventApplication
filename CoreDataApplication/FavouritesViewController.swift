@@ -1,22 +1,20 @@
-//
-//  FavouritesViewController.swift
-//  CoreDataApplication
-//
-//  Created by Абдинур Куатбек on 2/26/20.
-//  Copyright © 2020 Dauren. All rights reserved.
-//
 
 import UIKit
 
 class FavouritesViewController: UITableViewController {
-
+    @IBOutlet weak var labelText: UILabel!
+    
     private let catmanager = CategoryManager()
      private let itemManager = ItemManager()
      override func viewDidLoad() {
          super.viewDidLoad()
+        
      }
      override func viewDidAppear(_ animated: Bool) {
          tableView.reloadData()
+        if itemManager.getFavItemst(fav: true).count == 0 {
+            labelText.text = "Нету любимых ивентов"
+        }
      }
     
      override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

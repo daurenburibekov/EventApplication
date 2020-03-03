@@ -2,13 +2,23 @@ import UIKit
 
 class ViewController: UITableViewController {
 
+    @IBOutlet weak var labelText: UILabel!
     private let catmanager = CategoryManager()
     private let itemManager = ItemManager()
     override func viewDidLoad() {
         super.viewDidLoad()
+        catmanager.addItem(id: 1, name: "Sport")
+        catmanager.addItem(id: 2, name: "Entertainment")
+        catmanager.addItem(id: 3, name: "Music")
+        catmanager.addItem(id: 4, name: "Exhibition")
     }
+    
     override func viewDidAppear(_ animated: Bool) {
+//        if itemManager.getItems().isEmpty {
+//            labelText.text = "Нету ивентов"
+//        }
         tableView.reloadData()
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

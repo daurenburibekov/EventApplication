@@ -28,6 +28,9 @@ class AddAndEditViewController: UIViewController {
         
         toolbar.setItems([flexspace, donebutton], animated: true)
         dateField.inputAccessoryView = toolbar
+        if eventValue != nil {
+            needHandler(alert: UIAlertAction(title: selectCat.currentTitle, style: .default, handler: self.needHandler))
+        }
     }
     @objc func doneAction(){
         let formatter = DateFormatter()

@@ -11,6 +11,7 @@ import CoreData
 class ItemManager {
 
     func addItem(id: Int, name: String, desc: String, place: String, date: Date, categoryId: Int){
+        
         let item = NSManagedObject(entity: getItemEntity(), insertInto: getManagedContext())
         item.setValue(id, forKey: "id")
         item.setValue(name, forKey: "name")
@@ -110,9 +111,9 @@ class ItemManager {
             let item = items[0]
             item.setValue(name, forKeyPath: "name")
             item.setValue(desc, forKeyPath: "desc")
-            item.setValue(place, forKey: "place")
-            item.setValue(place, forKeyPath: "date")
-            item.setValue(place, forKeyPath: "categoryId")
+            item.setValue(place, forKeyPath: "place")
+            item.setValue(date, forKeyPath: "date")
+            item.setValue(categoryId, forKeyPath: "categoryId")
 
             try getManagedContext().save()
         } catch let error as NSError{

@@ -13,6 +13,9 @@ class CategoryManager {
 
 
     func addItem(id: Int, name: String){
+        if getCategory(id: id) != nil  {
+            return
+        }
         let category = NSManagedObject(entity: getItemEntity(), insertInto: getManagedContext())
         category.setValue(id, forKey: "id")
         category.setValue(name, forKey: "name")

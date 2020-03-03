@@ -20,8 +20,10 @@ class NoteViewController: UIViewController {
         super.viewDidLoad()
         setBg()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        self.viewDidLoad()
+    }
     func setBg(){
-        
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM dd yyyy"
         self.removeFromFav.layer.cornerRadius = 10
@@ -35,6 +37,8 @@ class NoteViewController: UIViewController {
         }
         if cellValue?.fav != true {
             removeFromFav.setTitle("Add to favourites", for: .normal)
+        } else if cellValue?.fav == true {
+            removeFromFav.setTitle("Remove from favourites", for: .normal)
         }
         self.viewAll.layer.cornerRadius = 10
         viewAllbgColor()
@@ -64,6 +68,11 @@ class NoteViewController: UIViewController {
     }
     @IBAction func removeFromFavAct(_ sender: Any) {
         eventManager.changeFav(id: Int(cellValue!.id))
+        if cellValue?.fav == false {
+            removeFromFav.setTitle("Add to favourites", for: .normal)
+        } else if cellValue?.fav == true {
+            removeFromFav.setTitle("Remove from favourites", for: .normal)
+        }
     }
     
 }
